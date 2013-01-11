@@ -1,0 +1,6 @@
+[submodule "yowsup"]
+	path = yowsup
+	url = git://github.com/tgalal/yowsup.git
+[submodule "backends/libyowsup/yowsup"]
+	path = backends/libyowsup/yowsup
+	url = git://github.com/tgalal/yowsup.git

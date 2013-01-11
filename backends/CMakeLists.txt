@@ -12,6 +12,7 @@ if (PROTOBUF_FOUND)
 	endif()
 
 	ADD_SUBDIRECTORY(template)
+	ADD_SUBDIRECTORY(libyowsup)
 	if(ENABLE_TWITTER)
 		ADD_SUBDIRECTORY(twitter)
 	endif()
