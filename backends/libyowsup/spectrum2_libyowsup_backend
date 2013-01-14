@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+import sys
+sys.path.append("/usr/lib/python/site-packages/spectrum2-plugin")
+
 import asyncore, argparse, protocol_pb2, socket, logging
 from NetworkPlugin import NetworkPlugin
 
@@ -92,12 +95,18 @@ class IOChannel(asyncore.dispatcher):
 
 
 if __name__ == "__main__":
+	'''
+	Disable proper argument parsing for now, since argparse
+	cannot ignore arguments it cannot recognize
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--host', type=str, required=True)
 	parser.add_argument('--port', type=int, required=True)
 	parser.add_argument('config_file', type=str)
 
 	args = parser.parse_args()
-	io = IOChannel(args.host, args.port, handleTransportData)
+	'''
+	host = sys.argv[2]
+	port = int(sys.argv[4])
+	io = IOChannel(host, port, handleTransportData)
 	np = SpectrumPlugin(io)
 	asyncore.loop()
