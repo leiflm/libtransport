@@ -1,10 +1,8 @@
 #!/usr/bin/python
 
-import sys
-sys.path.append("/usr/lib/python/site-packages/spectrum2-plugin")
-
-import asyncore, argparse, protocol_pb2, socket, logging
-from NetworkPlugin import NetworkPlugin
+import sys, asyncore, argparse, socket, logging
+from spectrum2_plugin import protocol_pb2 
+from spectrum2_plugin.NetworkPlugin import NetworkPlugin
 
 np = None
 
@@ -105,6 +103,9 @@ if __name__ == "__main__":
 
 	args = parser.parse_args()
 	'''
+	if (len(sys.argv) < 4):
+		print "Too few arguments. Exiting..."
+		exit(-1)
 	host = sys.argv[2]
 	port = int(sys.argv[4])
 	io = IOChannel(host, port, handleTransportData)
